@@ -3,7 +3,7 @@ import useLocalStorage from './useLocalStorage';
 
 export default function useDarkMode(){
 
-    const [toggleDarkMode, setToggleDarkMode] = useLocalStorage('darkMode')
+    const [toggleDarkMode, setToggleDarkMode] = useLocalStorage('darkMode', false)
 
     useEffect( () => {
 
