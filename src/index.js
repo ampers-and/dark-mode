@@ -2,6 +2,13 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 
+import {BrowserRouter as Router} from 'react-router-dom';
+import {Route} from 'react-router-dom';
+import SpecificChart from './components/SpecificChart';
+import TabNav from './components/TabNav';
+import Home from './components/Home';
+import 'semantic-ui-css/semantic.min.css'
+
 import Charts from "./components/Charts";
 import Navbar from "./components/Navbar";
 
@@ -21,10 +28,13 @@ const App = () => {
   return (
     <div className="App">
       <Navbar />
-      <Charts coinData={coinData} />
+      <TabNav coinData = {coinData} />
+      {/* <Route exact path="/" component ={Home}/> */}
+      <Route exact path="/" render={(props) => <Home {...props} coinData={coinData}/>}/>
+      <Route path="/charts/:id" render={(props) => <SpecificChart {...props}/>}/>
     </div>
   );
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.render(<Router><App /></Router>, rootElement);
