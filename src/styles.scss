@@ -251,3 +251,33 @@ text-align: left;
     border: none;
   }
 }
+
+//Stretch
+
+.grid-view {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.page-view {
+  min-height: 40vh;
+}
+
+.grid-view div.card.ui {
+  margin: 1.25rem;
+}
+
+.ui.card{
+  width:200px !important;
+  background-color: inherit;
+}
+
+.ui.card>.content>.header, .ui.card>.content>.description{
+  color:inherit;
+}
+
+.ui.card .meta, .ui.card>.extra{
+  color:inherit;
+  opacity:.5;
+}

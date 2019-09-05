@@ -7,6 +7,7 @@ import {Route} from 'react-router-dom';
 import SpecificChart from './components/SpecificChart';
 import TabNav from './components/TabNav';
 import Home from './components/Home';
+import 'semantic-ui-css/semantic.min.css'
 
 import Charts from "./components/Charts";
 import Navbar from "./components/Navbar";
@@ -28,7 +29,8 @@ const App = () => {
     <div className="App">
       <Navbar />
       <TabNav coinData = {coinData} />
-      <Route exact path="/" component ={Home}/>
+      {/* <Route exact path="/" component ={Home}/> */}
+      <Route exact path="/" render={(props) => <Home {...props} coinData={coinData}/>}/>
       <Route path="/charts/:id" render={(props) => <SpecificChart {...props}/>}/>
     </div>
   );
