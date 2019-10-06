@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import CardList from './CardList';
+import ReactCardFlip from 'react-card-flip';
 
 const Title = styled.h1`
     margin:40px auto 0;
@@ -16,7 +17,7 @@ const Par = styled.h4`
     margin:20px;
 `;
 
-export default function Home({coinData}){
+{/* export default function Home({coinData}){
 
     return(
         <div className='home'>
@@ -28,4 +29,37 @@ export default function Home({coinData}){
             <CardList coinData={coinData} />
         </div>
     )
-}
+} */}
+
+//Card Flip
+
+class Home extends React.Component {
+    constructor() {
+      super();
+        this.state = {
+        isFlipped: false
+      };
+      this.handleClick = this.handleClick.bind(this);
+    }
+   
+    handleClick(e) {
+      e.preventDefault();
+      this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
+    }
+   
+    render() {
+      return (
+        <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
+          <YOUR_FRONT_CCOMPONENT key="front">
+            This is the front of the card.
+            <button onClick={this.handleClick}>Click to flip</button>
+          </YOUR_FRONT_CCOMPONENT>
+   
+          <YOUR_BACK_COMPONENT key="back">
+            This is the back of the card.
+            <button onClick={this.handleClick}>Click to flip</button>
+          </YOUR_BACK_COMPONENT>
+        </ReactCardFlip>
+      )
+    }
+  }
